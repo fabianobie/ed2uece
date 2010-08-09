@@ -1,7 +1,7 @@
 package ed2.model;
 
 import javax.swing.text.StyledEditorKit.BoldAction;
-
+ 
 public class ArvoreB {
 	private Integer numChaves;
 	private Boolean folha;
