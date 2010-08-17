@@ -1,44 +1,25 @@
 package ed2.controller;
 
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 import ed2.model.ArvoreEsquerda;
+import ed2.model.FibonacciHeap;
 
-public class ArvoreEsquerdaController {
+public class FibonacciHeapController {
 	
-	private ArvoreEsquerda raiz;//primeiro elemento da arvore
+	private FibonacciHeap filaHeap;
 	
 	
-	//incluir um elemento na arvore esquerda
-	public void input(Integer elemento){
-		ArvoreEsquerda temp = new ArvoreEsquerda(elemento);
-		raiz = merge(temp, raiz);
+	public FibonacciHeapController(){
 		
 	}
-	//retira o elemento do topo da arvore esquerda
-	public Integer output(){
-		Integer elemento = raiz.getChave();
-		raiz = merge(raiz.getNoEsquerdo(), raiz.getNoDireito());
-		return elemento;
+	
+	public void inputHeap(Integer chave){
+		setFilaHeap(new FibonacciHeap(chave));
+			
 	}
-	//Função responsavel por retornar a altura de um nó
-	public static Integer getAltura(ArvoreEsquerda arvore){
-		Integer alturaEsquerda =0;
-		Integer alturaDireita = 0;
-		if (arvore.getNoDireito() != null) {
-			alturaDireita = getAltura(arvore.getNoEsquerdo());
-		}
-		if (arvore.getNoEsquerdo() != null) {
-			alturaEsquerda = getAltura(arvore.getNoDireito());
-		}
-		if (alturaDireita> alturaEsquerda) {
-			 return alturaDireita = alturaDireita +1;
-		}else{
-			return alturaEsquerda = alturaEsquerda +1;
-		}
-		
-		
-	}
-	//Função que tem como objetivo unir duas arvores esquerdas
 	public ArvoreEsquerda merge(ArvoreEsquerda arvoreA, ArvoreEsquerda arvoreB){
 		//Caso alguma das arvores for nula retorna a outra arvore
 		if(arvoreA == null)
@@ -78,22 +59,23 @@ public class ArvoreEsquerdaController {
 		}
 					
 	}
+	
 	//Função utilizada para inversão da arvore
 	public void troca(ArvoreEsquerda arvore){
 		ArvoreEsquerda temp = arvore.getNoEsquerdo();
 		arvore.setNoEsquerdo(arvore.getNoDireito());
 		arvore.setNoDireito(temp);
 	}
-	
-       
-        
-	
-    public ArvoreEsquerda getRaiz() {
-		return raiz;
+
+	public void setFilaHeap(FibonacciHeap filaHeap) {
+		this.filaHeap = filaHeap;
 	}
 
-	public void setRaiz(ArvoreEsquerda raiz) {
-		this.raiz = raiz;
+	public FibonacciHeap getFilaHeap() {
+		return filaHeap;
 	}
+
+
+	
 
 }
