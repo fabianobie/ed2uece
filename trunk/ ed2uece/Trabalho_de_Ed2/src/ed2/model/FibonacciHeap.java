@@ -1,37 +1,40 @@
 package ed2.model;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import ed2.controller.ArvoreEsquerdaController;
 
 public class FibonacciHeap {
 	
-	private LinkedList<ArvoreEsquerda> lista;
+	
 	private ArvoreEsquerda arvore;
 	
 	public FibonacciHeap(Integer chave){
+		lista = new ArrayList<ArvoreEsquerda>();
 		arvore = new ArvoreEsquerda(chave);
 		arvore.setAltura(ArvoreEsquerdaController.getAltura(arvore));
 		lista.add(arvore);
 	}
 	public FibonacciHeap(){
-		arvore = new ArvoreEsquerda();
-		arvore.setAltura(ArvoreEsquerdaController.getAltura(arvore));
-		lista.add(arvore);
+		lista = new ArrayList<ArvoreEsquerda>();
 	}
 	
 	
-	public void setLista(LinkedList<ArvoreEsquerda> lista) {
-		this.lista = lista;
-	}
-	public LinkedList<ArvoreEsquerda> getLista() {
-		return lista;
-	}
+
 	public void setArvore(ArvoreEsquerda arvore) {
 		this.arvore = arvore;
 	}
 	public ArvoreEsquerda getArvore() {
 		return arvore;
 	}
+	public List<ArvoreEsquerda> getLista() {
+		return lista;
+	}
+	public void setLista(List<ArvoreEsquerda> lista) {
+		this.lista = lista;
+	}
+	private List<ArvoreEsquerda> lista;
 
 }
