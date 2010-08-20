@@ -14,6 +14,7 @@ import org.apache.commons.collections15.Transformer;
 import ed2.view.AvlGUI;
 import ed2.view.BGUI;
 import ed2.view.BplusGUI;
+import ed2.view.SplayGUI;
 import ed2.view.JUNG.PositionerB;
 import edu.uci.ics.jung.algorithms.layout.StaticLayout;
 import edu.uci.ics.jung.algorithms.layout.TreeLayout;
@@ -39,21 +40,28 @@ public class EdManager {
 	public static final String ED_AVL = "AVL";
 	public static final String ED_B = "B";
 	public static final String ED_B_PLUS = "B+";
-	public static final int VV_WIDTH = 500;
-	public static final int VV_HEIGHT = 500;
+	public static final String SPLAY = "SPLAY";
+	public static final int VV_WIDTH =400;
+	public static final int VV_HEIGHT = 400;
 	
 	private AvlGUI avlGUI;
 	private BGUI bGUI;
 	private BplusGUI bplusGUI;
+	private SplayGUI splayGUI;
 	private VisualizationViewer<String, String> avlVV;
-	private VisualizationViewer<String, String> bVV;
-	private VisualizationViewer<String, String> bplusVV;
+//	private VisualizationViewer<String, String> bVV;
+//	private VisualizationViewer<String, String> bplusVV;
+	private VisualizationViewer<String, String> splayVV;
 	private DefaultModalGraphMouse<String, String> graphMouse;
 	
 	private List<String> avlVertices;
 	private List<Pair<String>> avlEdges;
-	private List<String> bVertices;
-	private List<String> bplusVertices;
+	
+	private List<String> splayVertices;
+	private List<Pair<String>> splayEdges;
+	
+//	private List<String> bVertices;
+//	private List<String> bplusVertices;
 	private boolean pickinkOk = false;
 	
 	private static int countEdge = 0;
@@ -67,26 +75,32 @@ public class EdManager {
 		avlGUI = new AvlGUI();
 		bGUI = new BGUI();
 		bplusGUI = new BplusGUI();
+		splayGUI = new SplayGUI();
 		
 		avlVV = avlGUI.getAvlVV();
-		bVV = bGUI.getBVV();
-		bplusVV = bplusGUI.getBPlusVV();
+		splayVV = splayGUI.getSplayVV();
+		
+//		bVV = bGUI.getBVV();
+//		bplusVV = bplusGUI.getBPlusVV();
 		
 		avlVertices = new ArrayList<String>();
 		avlEdges = new ArrayList<Pair<String>>();
-		bVertices = new ArrayList<String>();
+		splayEdges = new ArrayList<Pair<String>>();
+		avlVertices = new ArrayList<String>();
+	//	bVertices = new ArrayList<String>();
 	}
 	
 	private void setProperties() {
 		setVisualizationViewerProperties(avlVV);
-		setVisualizationViewerProperties(bVV);
-		setVisualizationViewerProperties(bplusVV);
+		setVisualizationViewerProperties(splayVV);
+		//setVisualizationViewerProperties(bplusVV);
 		
 		addAvlVertices();
-		addBVertices();
+		//addBVertices();
 	}
 	
 	private void setVisualizationViewerProperties(VisualizationViewer<String, String> vv) {
+		
 		vv.setBackground(Color.WHITE);
 		//Vertex Transformations
 		vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller<String>());
@@ -108,30 +122,30 @@ public class EdManager {
         												 Colors.PICKED_EDGE_COLOR));
 		vv.setEdgeToolTipTransformer(new ToStringLabeller<String>());
 		
-		if (vv.equals(bVV)) {
-			vv.getRenderer().getVertexLabelRenderer().setPosition(Position.CNTR);
-			vv.getRenderContext().setVertexIconTransformer(new Transformer<String,Icon>() {
-				public Icon transform(final String v) {
-					return new Icon() {
-						
-						public int getIconHeight() {
-							return BGUI.VERTEX_HEIGHT;
-						}
-						
-						public int getIconWidth() {
-							return BGUI.VERTEX_WIDTH;
-						}
-						
-						public void paintIcon(Component c, Graphics g, int x, int y) {
-							g.setColor(Color.BLACK);
-							g.fillRoundRect(x-1, y-1, BGUI.VERTEX_WIDTH+2, BGUI.VERTEX_HEIGHT+2, 5, 5);
-							g.setColor(Color.WHITE);
-							g.fillRoundRect(x, y, BGUI.VERTEX_WIDTH, BGUI.VERTEX_HEIGHT, 5, 5);
-//							g.drawString(""+v, x+6, y+15);
-						}};
-				}});
-			
-		}
+//		if (vv.equals(bVV)) {
+//			vv.getRenderer().getVertexLabelRenderer().setPosition(Position.CNTR);
+//			vv.getRenderContext().setVertexIconTransformer(new Transformer<String,Icon>() {
+//				public Icon transform(final String v) {
+//					return new Icon() {
+//						
+//						public int getIconHeight() {
+//							return BGUI.VERTEX_HEIGHT;
+//						}
+//						
+//						public int getIconWidth() {
+//							return BGUI.VERTEX_WIDTH;
+//						}
+//						
+//						public void paintIcon(Component c, Graphics g, int x, int y) {
+//							g.setColor(Color.BLACK);
+//							g.fillRoundRect(x-1, y-1, BGUI.VERTEX_WIDTH+2, BGUI.VERTEX_HEIGHT+2, 5, 5);
+//							g.setColor(Color.WHITE);
+//							g.fillRoundRect(x, y, BGUI.VERTEX_WIDTH, BGUI.VERTEX_HEIGHT, 5, 5);
+////							g.drawString(""+v, x+6, y+15);
+//						}};
+//				}});
+//			
+//		}
 		
 	}
 	
@@ -147,20 +161,24 @@ public class EdManager {
 		this.graphMouse = graphMouse;
 		
 		avlGUI.addGraphMouse(graphMouse);
-		bGUI.addGraphMouse(graphMouse);
-		bplusGUI.addGraphMouse(graphMouse);
+		splayGUI.addGraphMouse(graphMouse);
+//		bGUI.addGraphMouse(graphMouse);
+//		bplusGUI.addGraphMouse(graphMouse);
 	}
 	
 	public void addKeyListener(KeyListener keyListener) {
 		avlVV.addKeyListener(keyListener);
-		bVV.addKeyListener(keyListener);
-		bplusVV.addKeyListener(keyListener);
+		splayVV.addKeyListener(keyListener);
+//		bVV.addKeyListener(keyListener);
+//		bplusVV.addKeyListener(keyListener);
 	}
 	
 	public AvlGUI getAvlGUI() {
 		return avlGUI;
 	}
-	
+	public SplayGUI getSplayGUI() {
+		return splayGUI;
+	}
 	public BGUI getBGUI() {
 		return bGUI;
 	}
@@ -181,13 +199,13 @@ public class EdManager {
 		return avlVV;
 	}
 	
-	public VisualizationViewer<String, String> getbVV() {
-		return bVV;
-	}
-	
-	public VisualizationViewer<String, String> getBplusVV() {
-		return bplusVV;
-	}
+//	public VisualizationViewer<String, String> getbVV() {
+//		return bVV;
+//	}
+//	
+//	public VisualizationViewer<String, String> getBplusVV() {
+//		return bplusVV;
+//	}
 	
 	public boolean isPickinkOk() {
 		return pickinkOk;
@@ -350,59 +368,59 @@ public class EdManager {
 	//******************************************* AVL ************************************************************
 	
 	//******************************************** B *************************************************************
-	private void addBVertices() {
-		makeBExample();
-		updateBVector();
-	}
-	
-	private void makeBExample() {
-		String vertice1 = "V 1";
-		String vertice2 = "V 2";
-
-		bVertices.add(vertice1);
-		bVertices.add(vertice2);
-	}
-	
-	public void addVertexInBVector(String vertex) {
-		bVertices.add(vertex);
-		updateBVector();
-	}
-	
-	public void addVertexInPositionBVector(String vertex, int position) {
-		if (position < bVertices.size())
-			bVertices.add(position, vertex);
-		else {
-			for (int i = bVertices.size(); i < position; i++) {
-				String ghostVertex = "GV "+i;
-				bVertices.add(ghostVertex);
-			}
-			bVertices.add(position, vertex);
-		}
-		updateBVector();
-	}
-	
-	public void removeVertexInBVector(String vertex) {
-		bVertices.remove(vertex);
-		updateBVector();
-	}
-	
-	private void updateBVector() {
-		Graph<String, String> bGraph = bGUI.getGraph();
-		StaticLayout<String, String> oldStaticLayout = bGUI.getStaticLayout();
-		
-		for (String vertex : bVertices)
-			if (!bGraph.containsVertex(vertex))
-				bGraph.addVertex(vertex);
-
-		StaticLayout<String, String> staticLayout = new StaticLayout<String, String>(bGraph);
-		bVV.getRenderContext().getPickedVertexState().clear();
-		bVV.getRenderContext().getPickedEdgeState().clear();
-		PositionerB.setVerticesPositions(staticLayout, bVV, bVertices);
-		
-		LayoutTransition<String, String> lt = new LayoutTransition<String, String>(
-				bVV, oldStaticLayout, staticLayout);
-		Animator animator = new Animator(lt);
-		animator.start();
-	}
+//	private void addBVertices() {
+//		makeBExample();
+//		updateBVector();
+//	}
+//	
+//	private void makeBExample() {
+//		String vertice1 = "V 1";
+//		String vertice2 = "V 2";
+//
+//		bVertices.add(vertice1);
+//		bVertices.add(vertice2);
+//	}
+//	
+//	public void addVertexInBVector(String vertex) {
+//		bVertices.add(vertex);
+//		updateBVector();
+//	}
+//	
+//	public void addVertexInPositionBVector(String vertex, int position) {
+//		if (position < bVertices.size())
+//			bVertices.add(position, vertex);
+//		else {
+//			for (int i = bVertices.size(); i < position; i++) {
+//				String ghostVertex = "GV "+i;
+//				bVertices.add(ghostVertex);
+//			}
+//			bVertices.add(position, vertex);
+//		}
+//		updateBVector();
+//	}
+//	
+//	public void removeVertexInBVector(String vertex) {
+//		bVertices.remove(vertex);
+//		updateBVector();
+//	}
+//	
+//	private void updateBVector() {
+//		Graph<String, String> bGraph = bGUI.getGraph();
+//		StaticLayout<String, String> oldStaticLayout = bGUI.getStaticLayout();
+//		
+//		for (String vertex : bVertices)
+//			if (!bGraph.containsVertex(vertex))
+//				bGraph.addVertex(vertex);
+//
+//		StaticLayout<String, String> staticLayout = new StaticLayout<String, String>(bGraph);
+//		bVV.getRenderContext().getPickedVertexState().clear();
+//		bVV.getRenderContext().getPickedEdgeState().clear();
+//		PositionerB.setVerticesPositions(staticLayout, bVV, bVertices);
+//		
+//		LayoutTransition<String, String> lt = new LayoutTransition<String, String>(
+//				bVV, oldStaticLayout, staticLayout);
+//		Animator animator = new Animator(lt);
+//		animator.start();
+//	}
 	//******************************************** B *************************************************************
 }

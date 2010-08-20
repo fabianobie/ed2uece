@@ -37,10 +37,10 @@ public class EdManagerController {
 		@Override
 		public void mouseEntered(MouseEvent e0) {
 			super.mouseEntered(e0);
-			if (e0.getComponent() == edManager.getbVV()) {
-				edManager.setPickinkOk(false);
-				edManager.setModeTranforming();
-			}
+//			if (e0.getComponent() == edManager.getbVV()) {
+//				edManager.setPickinkOk(false);
+//				edManager.setModeTranforming();
+//			}
 		}
 
 		@Override

@@ -62,9 +62,11 @@ public class InsertPanelController {
 						String vertex = info[0];
 						int position = Integer.parseInt(info[1].trim());
 						
-						edManager.addVertexInPositionBVector(vertex, position);
-					} else
-						edManager.addVertexInBVector(text);
+						//edManager.addVertexInPositionBVector(vertex, position);
+					} else{
+						
+					//	edManager.addVertexInBVector(text);
+						}
 				}
 			}
 		}
