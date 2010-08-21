@@ -12,6 +12,24 @@ public class DHeapController {
 		heap = new Dheap(D, QUANTIDADE_ELEMENTOS_DO_VETOR);
 	}
 	
+	public void inHeap(Dheap heap ,Integer chave){
+		//caso o heap esteja cheio
+		
+		if(heap.getTamanhoHeap()+1==heap.getEstrutura().length){
+			Integer vetorTemp[]= new Integer[QUANTIDADE_ELEMENTOS_DO_VETOR*1000 +1]; 
+			//esse metodo copia um array para outro array adequqndo os tamanhos
+			System.arraycopy(heap.getEstrutura(), 0, vetorTemp, 0, heap.getEstrutura().length);
+		    heap.setEstrutura(vetorTemp); 
+		}
+		//colocando o elemento inserido no final do Heap
+		heap.getEstrutura()[heap.getTamanhoHeap()+1] = chave;
+		//Agora vamos colocar o elemento do heap no topo
+		InTop(heap.getTamanhoHeap()+1);
+		//aumentando a quantidade de elementos do heap
+		heap.setTamanhoHeap(heap.getTamanhoHeap()+1);
+		
+	}
+	
 	public void inHeap(Integer chave){
 		//caso o heap esteja cheio
 		
