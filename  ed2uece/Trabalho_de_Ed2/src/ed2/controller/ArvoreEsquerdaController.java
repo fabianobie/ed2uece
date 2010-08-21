@@ -14,6 +14,12 @@ public class ArvoreEsquerdaController {
 		raiz = merge(temp, raiz);
 		
 	}
+	//incluir um elemento na arvore esquerda
+	public void input(Integer elemento, ArvoreEsquerda arvore){
+	//	ArvoreEsquerda temp = new ArvoreEsquerda(elemento);
+		raiz = merge(arvore, raiz);
+		
+	}
 	//retira o elemento do topo da arvore esquerda
 	public Integer output(){
 		Integer elemento = raiz.getChave();
