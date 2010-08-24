@@ -12,7 +12,16 @@ public class Dheap {
 		this.estrutura = new Integer[tamanhoDaEstrutura+1];//temos que adicionar uma casa no tamanho do vetor pois comercamos apartir da posição 1
 	    this.tamanhoHeap = 0;
 	}
-	
+	@Override
+	public String toString() {
+	    String retornoDaFuncao = "";
+		for (int i = 0; i < estrutura.length; i++) {
+			retornoDaFuncao +="," + estrutura[i].toString();
+		}
+		return "T ["+retornoDaFuncao+"]";
+		
+		
+	};
 	public Integer getD() {
 		return d;
 	}

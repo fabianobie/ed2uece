@@ -18,6 +18,15 @@ public HashMeioAberto(int tamanho, int fatorCarga){
 	}	
 }
 
+//@Override
+//public String toString() {
+//	String hashingMeioAberto ="HMA [";
+//	for (int i = 0; i < hashMeioAberto.length; i++) {
+//		hashingMeioAberto +="valor"","; 
+//	}
+//	return "";
+//}
+
 public void setTamanho(int tam){
 	this.tamanho=tam;
 }

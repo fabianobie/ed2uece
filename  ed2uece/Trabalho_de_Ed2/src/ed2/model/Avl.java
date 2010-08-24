@@ -48,6 +48,13 @@ public class Avl {
 	public Avl getNo_esq() {
 		return no_esq;
 	}
+	@Override
+	public String toString() {
+		return "N [ valor"+chave+"-"+"FD"+ no_dir.getChave()+"-"+"FE"+no_esq.getChave()+"]";
+		
+		
+	};
+	
 	//Sobre escrevendo a função de igualdade.Para o critetio de comparação do objeto seja a chave.
 	@Override
 	public boolean equals(Object obj) {

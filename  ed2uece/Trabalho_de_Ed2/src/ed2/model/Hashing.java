@@ -30,7 +30,15 @@ public class Hashing {
 		
 		
 	}
-	
+	@Override
+	public String toString() {
+		String vetor ="H"; 
+		for (int i = 0; i < tabelaAtual.size(); i++) {
+			vetor +="[Valor"+ tabelaAtual.get(i)+",";
+		}
+		vetor = " ]";
+		return vetor;
+	}
 	public void setTamanhoAtual(Integer tamanhoAtual) {
 		this.tamanhoAtual = tamanhoAtual;
 	}

@@ -18,7 +18,12 @@ public class Splay {
 	}
 	//A estrutura da Splay e a mesma de uma de uma arvore binaria comum.
 	
-	
+	@Override
+	public String toString() {
+		return "N [ valor"+chave+"-"+"FD"+ noDir.getChave()+"-"+"FE"+noEsq.getChave()+"]";
+		
+		
+	};
 	public void setChave(Integer chave) {
 		this.chave = chave;
 	}

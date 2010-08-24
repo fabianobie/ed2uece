@@ -1,6 +1,7 @@
 package ed2.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -21,6 +22,16 @@ public class FibonacciHeap {
 		lista = new ArrayList<ArvoreEsquerda>();
 	}
 	
+	@Override
+	public String toString() {
+		String fibonacciEsquerda= "FH"; 
+		for (ArvoreEsquerda arvores : lista) {
+			fibonacciEsquerda += "-"+"N ["+arvores.toString()+"]";
+		}
+		
+		return fibonacciEsquerda;
+		
+	}
 	
 
 	public void setArvore(ArvoreEsquerda arvore) {
