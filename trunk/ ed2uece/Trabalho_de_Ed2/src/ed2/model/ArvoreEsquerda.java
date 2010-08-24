@@ -26,7 +26,12 @@ public class ArvoreEsquerda {
 	public ArvoreEsquerda(){
 		
 	}
-	
+	@Override
+	public String toString() {
+		return "N [ valor"+chave+"-"+"FD"+noDireito.getChave()+"-"+"FE"+noEsquerdo.getChave()+"]";
+		
+		
+	};
 	public Integer getChave() {
 		return chave;
 	}
