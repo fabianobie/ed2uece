@@ -11,13 +11,14 @@ import ed2.model.FibonacciHeap;
 
 public class FibonacciHeapController {
 	
-	private FibonacciHeap filaHeap;
+	private FibonacciHeap filaHeap; //Fila heap a ser controlada
 	
-	
+	//Construtor da Classe
 	public FibonacciHeapController(){
 		filaHeap = new FibonacciHeap();
 	}
 	
+	//Insere elemento na Heap
 	public void inputHeap(Integer chave){
 		ArvoreEsquerda arvoreTemp = new ArvoreEsquerda(chave);
 		arvoreTemp.setAltura(ArvoreEsquerdaController.getAltura(arvoreTemp));
@@ -26,9 +27,11 @@ public class FibonacciHeapController {
 		
 			
 	}
+	//Elimina elemento de uma Heap
 	public Integer outHeap(FibonacciHeap fibonacciHeap){
 		return 1;
 	}
+	//Verifica altura de uma Heap
 	public void verificaAlturas(FibonacciHeap filaHeap){
 		
 	//	List<String> listaTemp = new ArrayList<String>();
@@ -39,6 +42,7 @@ public class FibonacciHeapController {
 			}
 		}
 	}
+	//Mistura duas árvores esquerda
 	public ArvoreEsquerda merge(ArvoreEsquerda arvoreA, ArvoreEsquerda arvoreB){
 		//Caso alguma das arvores for nula retorna a outra arvore
 		if(arvoreA == null)

@@ -3,15 +3,16 @@ package ed2.controller;
 import ed2.model.Hashing;
 
 public class HashingController {
-	private static final int QUANTIDADE_ELEMENTOS_DO_HASH = 7;
-	private  Hashing hash;
+	private static final int QUANTIDADE_ELEMENTOS_DO_HASH = 7; //Tamanho do vetor inicial da Hash
+	private  Hashing hash; //Hash a ser utilizada na classe
 	
+	//Construtor de Classe
 	public HashingController(){
 	  hash = new Hashing(7);	
 	}
 	
 	
-	
+	//Insere elementos em uma Hash
 	public void inserirHash(Hashing hash,int chave){
 	    //    Boolean controlador;
 		 int enderecoElemento = 0;
@@ -77,6 +78,7 @@ public class HashingController {
          
 	 }
 	 
+	 //Função auxiliar de proximo primo para incrementar rehashing
 	public Integer proximoPrimo(Integer chave){
 		Integer atual,i;
 		Boolean primo;

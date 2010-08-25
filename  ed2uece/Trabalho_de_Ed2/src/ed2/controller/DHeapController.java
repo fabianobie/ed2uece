@@ -4,14 +4,16 @@ import ed2.model.Dheap;
 
 public class DHeapController {
 	
-	private static final int D = 2;
-	private static final int QUANTIDADE_ELEMENTOS_DO_VETOR = 100000;
-	private Dheap heap;
+	private static final int D = 2; //Quantidade de elementos filhos
+	private static final int QUANTIDADE_ELEMENTOS_DO_VETOR = 100000; //Tamanho do vetor
+	private Dheap heap; //Estrutura
 	
+	//Construtor da Classe
 	public DHeapController(){
 		heap = new Dheap(D, QUANTIDADE_ELEMENTOS_DO_VETOR);
 	}
 	
+	//Insere elemento em uma heap
 	public void inHeap(Dheap heap ,Integer chave){
 		//caso o heap esteja cheio
 		
@@ -30,6 +32,7 @@ public class DHeapController {
 		
 	}
 	
+	//insere elemento na heap de classe
 	public void inHeap(Integer chave){
 		//caso o heap esteja cheio
 		
@@ -76,9 +79,9 @@ public class DHeapController {
 		heap.getEstrutura()[elemento2] = temp;
 	}
 	
-	
+	//Retira o primeiro elemento da heap
 	public Integer outHeap(){
-		if(heap.getTamanhoHeap() == 0){
+		if(heap.getTamanhoHeap() == 0){ //Caso o heap esteja vazio
 			System.out.println("O heap está vazio");
 			return -1;
 		}else{

@@ -13,16 +13,18 @@ public class Hashing {
 	private ArrayList<Integer> tabelaTemp;//Tabela temporaria utilizada para Tratamentos
 	private Integer qtdItens;
 	
-	
+	//Construtor da estrutura
 	public Hashing(int tamanho){
 		tabelaAtual = new ArrayList<Integer>(tamanho);
 		tabelaTemp = new ArrayList<Integer>(tamanho);
 	} 
-	
+	//Construtor da estrutura
 	public Hashing(Integer chave){
 		tabelaAtual.add(chave);
 		
 	}
+	
+	//Construtora da Estrutura
 	public Hashing(Integer chave,Integer tamanho){
 		this.tamanhoAtual = tamanho;
 		tabelaAtual = new ArrayList<Integer>(tamanho);
@@ -39,6 +41,8 @@ public class Hashing {
 		vetor = " ]";
 		return vetor;
 	}
+	
+	//Os metodos seguintes recebem ou estabelecem as propriedades das estruturas
 	public void setTamanhoAtual(Integer tamanhoAtual) {
 		this.tamanhoAtual = tamanhoAtual;
 	}

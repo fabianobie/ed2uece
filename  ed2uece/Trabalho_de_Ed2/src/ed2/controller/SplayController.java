@@ -3,13 +3,14 @@ package ed2.controller;
 import ed2.model.Splay;
 
 public class SplayController {
-	private Splay splayInicial;
+	private Splay splayInicial; //Estrutura a ser utilizada na classe
 	boolean verifica;
 	
+	//Construtor de classe
 	public SplayController(){
 		splayInicial = new Splay();
 	}
-	
+	//Insere o elemento em uma splay
 	public void inserirSplay(Splay splayInserida ,Integer chave){
 		if(splayInserida == null){
 			splayInserida = new Splay(chave);
@@ -115,7 +116,7 @@ public class SplayController {
 		splayInserida.setNoPai(splayInserida.getNoPai().getNoPai());
 	}
 	
-	
+	//Busca elementos em uma splay
 	public void buscaSplay(Splay splayBusca, Integer chave){
 		if(chave < splayBusca.getChave()){
 			deletaSplay(splayBusca.getNoEsq(), chave);
@@ -128,7 +129,7 @@ public class SplayController {
 		}
 	}
 	
-	
+	//Deleta elemento de uma splay
 	public void deletaSplay(Splay splayDelete,Integer chave){
 		//Caso tenha chegado ao  fim retorna falso
 		if(splayDelete == null){

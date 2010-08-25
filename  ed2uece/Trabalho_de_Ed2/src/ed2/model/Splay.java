@@ -2,16 +2,18 @@ package ed2.model;
 
 public class Splay {
 	
-	private Integer chave;
-	private Splay noDir;
-	private Splay noEsq;
-	private Splay noPai;
+	private Integer chave; //Elemento da estrutura
+	private Splay noDir; //No direito
+	private Splay noEsq; //No esquerdo
+	private Splay noPai; //No pai
 	
 	
-
+	//Construtor da Estrutura
 	public Splay(){
 		
 	}
+	
+	//Construtor da Estrutura
 	public Splay(Integer chave){
 		this.chave = chave;
 		
@@ -24,6 +26,7 @@ public class Splay {
 		
 		
 	};
+	//Os metodos seguintes recebem ou estabelecem as propriedades das estruturas
 	public void setChave(Integer chave) {
 		this.chave = chave;
 	}

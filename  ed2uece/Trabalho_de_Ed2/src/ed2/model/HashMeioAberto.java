@@ -4,11 +4,12 @@ package ed2.model;
 
 public class HashMeioAberto {
 
-	private Avl[] hashMeioAberto;
-	private int tamanho;
-	private int fatorCarga;
-	private int elementos;
+	private Avl[] hashMeioAberto; //Vetor de AVLs
+	private int tamanho; //Tamanho da hash
+	private int fatorCarga; //Fator de Carga
+	private int elementos; //Quantidade de Elementos
 
+//Construtor da Estrutura
 public HashMeioAberto(int tamanho, int fatorCarga){
 	this.tamanho = tamanho;
 	this.fatorCarga = fatorCarga;
@@ -27,6 +28,7 @@ public HashMeioAberto(int tamanho, int fatorCarga){
 //	return "";
 //}
 
+//Os metodos seguintes recebem ou estabelecem as propriedades das estruturas
 public void setTamanho(int tam){
 	this.tamanho=tam;
 }
