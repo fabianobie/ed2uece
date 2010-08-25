@@ -188,6 +188,8 @@ public class AvlController {
 	  }
 		
 	}
+	
+	//Os metodos seguintes recebem ou estabelecem os elementos das estruturas
 	public void setAvlInicial(Avl avlInicial) {
 		this.avlInicial = avlInicial;
 	}

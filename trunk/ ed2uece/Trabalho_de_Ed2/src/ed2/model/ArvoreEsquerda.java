@@ -9,6 +9,7 @@ public class ArvoreEsquerda {
 	private ArvoreEsquerda noEsquerdo;//Filho Esquerdo
 	private ArvoreEsquerda noDireito;//Filho direito no
 	
+	//Construtor da Arvore Esquerda
 	public ArvoreEsquerda(Integer chave,Integer altura,Integer npl,ArvoreEsquerda noEsquerdo,ArvoreEsquerda noDireiro){
 		this.altura = 0;
 		this.chave = chave;
@@ -16,6 +17,8 @@ public class ArvoreEsquerda {
 		this.noDireito = null;
 		this.noEsquerdo= null;
 	}
+	
+	//Construtor da Arvore Esquerda
 	public ArvoreEsquerda(Integer chave){
 		this.altura = 0;
 		this.chave = chave;
@@ -32,6 +35,8 @@ public class ArvoreEsquerda {
 		
 		
 	};
+	
+	//Os metodos seguintes retornam ou estabelecem as propriedades da estrutura
 	public Integer getChave() {
 		return chave;
 	}

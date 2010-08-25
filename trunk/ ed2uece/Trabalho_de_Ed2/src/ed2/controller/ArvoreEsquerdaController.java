@@ -93,11 +93,11 @@ public class ArvoreEsquerdaController {
 	
        
         
-	
+	//Retorna a raiz
     public ArvoreEsquerda getRaiz() {
 		return raiz;
 	}
-
+    //Define a raiz
 	public void setRaiz(ArvoreEsquerda raiz) {
 		this.raiz = raiz;
 	}

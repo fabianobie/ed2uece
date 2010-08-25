@@ -13,11 +13,12 @@ public class FibonacciHeap {
 	private ArvoreEsquerda arvore;
 	
 	public FibonacciHeap(Integer chave){
-		lista = new ArrayList<ArvoreEsquerda>();
-		arvore = new ArvoreEsquerda(chave);
+		lista = new ArrayList<ArvoreEsquerda>();//Lista de Arvores Esquerda
+		arvore = new ArvoreEsquerda(chave);//No de Arvore Esquerda
 		arvore.setAltura(ArvoreEsquerdaController.getAltura(arvore));
 		lista.add(arvore);
 	}
+	// Construtor da Estrutura
 	public FibonacciHeap(){
 		lista = new ArrayList<ArvoreEsquerda>();
 	}
@@ -33,7 +34,7 @@ public class FibonacciHeap {
 		
 	}
 	
-
+//Os metodos seguintes recebem ou estabelecem as propriedades das estruturas
 	public void setArvore(ArvoreEsquerda arvore) {
 		this.arvore = arvore;
 	}

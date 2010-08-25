@@ -3,15 +3,16 @@ package ed2.model;
 import ed2.controller.AvlController;
 
 public class HashingAvl {
-	private Integer tamanhoAtual;
-	private Integer fatorCarga;
-	private AvlController arvore;
-	private Integer numeroDeElementos;
+	private Integer tamanhoAtual; //Tamanho da hashing
+	private Integer fatorCarga; //Fator de carga
+	private AvlController arvore; //Arvore de cada No
+	private Integer numeroDeElementos; //Numero de elementos inseridos
 	
-	
+	//Construtor da Estrutura
 	public HashingAvl(){
 		
 	}			
+	//Os metodos seguintes recebem ou estabelecem as propriedades das estruturas
 	public Integer getTamanhoAtual() {
 		return tamanhoAtual;
 	}

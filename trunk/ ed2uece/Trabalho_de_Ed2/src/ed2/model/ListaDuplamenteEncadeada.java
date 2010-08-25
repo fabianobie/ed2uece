@@ -2,18 +2,21 @@ package ed2.model;
 
 public class ListaDuplamenteEncadeada {
 	
-	private Integer dado;
-	private ListaDuplamenteEncadeada proximoNo;
-	private ListaDuplamenteEncadeada anteriorNo;
-	private Integer numElementos;
+	private Integer dado; //Elemento
+	private ListaDuplamenteEncadeada proximoNo; //No seguinte
+	private ListaDuplamenteEncadeada anteriorNo;//No anterior 
+	private Integer numElementos;//Total de elementos
 	
+	//Construtor da Estrutura
 	public ListaDuplamenteEncadeada(){
 		
 	}
+	//Construtor da Estrutura
 	public ListaDuplamenteEncadeada(Integer dado){
 		this.dado= dado;
 		this.numElementos = 0;
 	}
+	//Construtor da Estrutura
 	public ListaDuplamenteEncadeada(Integer dado,ListaDuplamenteEncadeada lista){
 		this.dado = dado;
 		this.proximoNo = lista;
@@ -21,6 +24,7 @@ public class ListaDuplamenteEncadeada {
       
 	}
 	
+	//Adiciona um elemento a lista
 	public void adicionar(Integer no,ListaDuplamenteEncadeada lista){
 		ListaDuplamenteEncadeada temp = new ListaDuplamenteEncadeada();
 		temp.setDado(no);
@@ -29,7 +33,7 @@ public class ListaDuplamenteEncadeada {
 		lista.setNumElementos(lista.getNumElementos()+1);
 	}
 	
-	
+	//Os metodos seguintes recebem ou estabelecem as propriedades das estruturas
 	
 	public void setDado(Integer dado) {
 		this.dado = dado;

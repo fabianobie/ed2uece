@@ -6,7 +6,7 @@ public class Dheap {
 	private Integer tamanhoHeap; //quantidade de elemntos do heap
 	
 	
-	
+	//Construtor da Estrutura
 	public Dheap(Integer d,Integer tamanhoDaEstrutura){
 		this.d =d;
 		this.estrutura = new Integer[tamanhoDaEstrutura+1];//temos que adicionar uma casa no tamanho do vetor pois comercamos apartir da posição 1
@@ -22,6 +22,8 @@ public class Dheap {
 		
 		
 	};
+	
+	//Os metodos seguintes retornam ou estabelece as propriedades
 	public Integer getD() {
 		return d;
 	}
