@@ -45,8 +45,8 @@ public class AppletPanel extends JApplet {
 	private InsertPanelController insertPanelController;
 	private InsertPanelGUI insertPanelGUI;
 	private AvlGUI avlGUI;
-	private BGUI bGUI;
-	private BplusGUI bplusGUI;
+
+
 	private SplayGUI splayGUI;
 	
 
@@ -81,7 +81,7 @@ public class AppletPanel extends JApplet {
 		menuItemHeap = new JMenuItem("Heap");
 		menuItemFechar = new JMenuItem("Fechar");
 		
-		sobreItemEquipe = new JMenuItem("Equipe");
+		
 		
 		listener = new MenuListener();
 		
