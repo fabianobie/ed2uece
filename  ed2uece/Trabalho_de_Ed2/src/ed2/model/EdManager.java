@@ -12,8 +12,7 @@ import javax.swing.Icon;
 import org.apache.commons.collections15.Transformer;
 
 import ed2.view.AvlGUI;
-import ed2.view.BGUI;
-import ed2.view.BplusGUI;
+
 import ed2.view.SplayGUI;
 import ed2.view.JUNG.PositionerB;
 import edu.uci.ics.jung.algorithms.layout.StaticLayout;
@@ -45,8 +44,8 @@ public class EdManager {
 	public static final int VV_HEIGHT = 400;
 	
 	private AvlGUI avlGUI;
-	private BGUI bGUI;
-	private BplusGUI bplusGUI;
+	
+	
 	private SplayGUI splayGUI;
 	private VisualizationViewer<String, String> avlVV;
 //	private VisualizationViewer<String, String> bVV;
@@ -73,8 +72,8 @@ public class EdManager {
 	
 	private void initObjs() {
 		avlGUI = new AvlGUI();
-		bGUI = new BGUI();
-		bplusGUI = new BplusGUI();
+		
+		
 		splayGUI = new SplayGUI();
 		
 		avlVV = avlGUI.getAvlVV();
@@ -179,21 +178,13 @@ public class EdManager {
 	public SplayGUI getSplayGUI() {
 		return splayGUI;
 	}
-	public BGUI getBGUI() {
-		return bGUI;
-	}
-	
-	public BplusGUI getBplusGUI() {
-		return bplusGUI;
-	}
+
 	
 	public DelegateForest<String, String> getAvlForest() {
 		return avlGUI.getForest();
 	}
 	
-	public SparseMultigraph<String, String> getBGraph() {
-		return bGUI.getGraph();
-	}
+
 	
 	public VisualizationViewer<String, String> getAvlVV() {
 		return avlVV;
